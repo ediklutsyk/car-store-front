@@ -1,3 +1,51 @@
-<p>
-  sign-up works!
-</p>
+<div class="item">
+  <form (ngSubmit)="onSignUp(form)" #form="ngForm">
+    <span>Sign up</span>
+    <p class="form-text text-muted help-block" *ngIf="error.length != 0">{{error}}</p>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input class="form-control"
+             id="email" type="text"
+             name="email"
+             placeholder="Enter email"
+             ngModel
+             required
+             email
+             #email="ngModel">
+      <small *ngIf="!email.valid && email.touched" class="form-text text-muted help-block">Email should be valid!
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control"
+             id="password"
+             type="password"
+             name="password"
+             placeholder="Enter password"
+             ngModel
+             required
+             minlength="7"
+             #password="ngModel">
+      <small *ngIf="!password.valid && password.touched"
+             class="form-text text-muted help-block">Password length should be at least 7 characters!
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm password</label>
+      <input class="form-control" id="confirmPassword" type="password" name="confirmPassword"
+             placeholder="Confirm password" ngModel
+             required
+             minlength="7"
+             #confirmPassword="ngModel">
+      <small *ngIf="!(password.value === confirmPassword.value) && confirmPassword.touched"
+             class="form-text text-muted help-block">
+        Passwords should match!
+      </small>
+    </div>
+    <a routerLink="/login">Login instead</a>
+    <div class="back_login_btns">
+      <button class="post_job_btn" type="submit" [disabled]="!form.valid">Register</button>
+      <button routerLink="/" class="post_job_btn">< Back</button>
+    </div>
+  </form>
+</div>

@@ -12,7 +12,9 @@ export class EventsService {
         get: 'requested.data.authentication',
         isAuth: 'requested.data.authentication.is.auth'
       },
-
+      user: {
+        create: 'requested.data.user.create',
+      },
     }
   };
   public received = {
@@ -20,6 +22,9 @@ export class EventsService {
       authentication: {
         get: 'received.data.authentication',
         isAuth: 'received.data.authentication.is.auth'
+      },
+      user: {
+        create: 'received.data.user.create',
       },
     },
     error: 'received.error',

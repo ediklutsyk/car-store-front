@@ -1,0 +1,198 @@
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+~"only screen and (min-device-pixel-ratio: 1.5)";
+@mobile: ~"only screen and (max-width: 529px)";
+@tablet: ~"only screen and (min-width: 530px) and (max-width: 991px)";
+@desktop: ~"only screen and (min-width: 992px) and (max-width: 1128px)";
+@desktop-xl: ~"only screen and (min-width: 1129px)";
+
+@background_color: #f3f3f3;
+@blocks_color: #ffffff;
+@sidebar_color: #191919;
+@active_color: #25AAE1;
+@inactive_color: #cccccc;
+@regular_color: #151515;
+
+.item {
+  display: flex;
+  margin-top: 5%;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    background-color: @background_color;
+    border-bottom: 1px solid @inactive_color;
+    width: 25%;
+    .back_login_btns{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      margin: 10%;
+      button{
+        width: 40%;
+        height: 40px;
+      }
+    }
+    span{
+      place-self: center;
+      font-size: 24px;
+      margin: 10%;
+    }
+    .logo {
+      display: flex;
+      flex-wrap: nowrap;
+      place-self: center;
+      align-items: flex-end;
+      cursor: pointer;
+      outline: none;
+      svg {
+        width: 100px;
+        height: auto;
+      }
+      span {
+        font-size: 20px;
+        place-self: center;
+        margin-left: 0;
+      }
+    }
+    input {
+      font-size: 16px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+      border-bottom: solid 1px @inactive_color;
+      &:focus {
+        border-bottom: solid 1px @active_color;
+      }
+    }
+    .post_job_btn {
+      background-color: @blocks_color;
+      border: 2px solid @active_color;
+      border-radius: 10px;
+      color: @active_color;
+      font-size: 16px;
+      &:hover {
+        background-color: @active_color;
+        color: @blocks_color;
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:disabled {
+        border: 2px solid @inactive_color;
+        color: @inactive_color;
+        cursor: pointer;
+        &:hover {
+          background: none;
+          color: @inactive_color;
+        }
+      }
+    }
+    a {
+      place-self: flex-end;
+      margin-top: 1%;
+      font-size: 16px;
+    }
+  }
+}
+
+@media @mobile, @tablet {
+  .item {
+    display: flex;
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    background-color: @background_color;
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      background-color: @background_color;
+      border-bottom: none;
+      width: 100%;
+      height: 100%;
+      .back_login_btns{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        margin: 10px;
+        button{
+          width: 120px;
+          height: 40px;
+        }
+      }
+      span{
+        place-self: center;
+        font-size: 24px;
+        margin: 10px;
+      }
+      .logo {
+        display: flex;
+        flex-wrap: nowrap;
+        place-self: center;
+        align-items: flex-end;
+        cursor: pointer;
+        outline: none;
+        svg {
+          width: 100px;
+          height: auto;
+        }
+        span {
+          font-size: 20px;
+          place-self: center;
+          margin-left: 0;
+        }
+      }
+      input {
+        font-size: 16px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 0;
+        outline: none;
+        box-shadow: none;
+        border-bottom: solid 1px @inactive_color;
+        &:focus {
+          border-bottom: solid 1px @active_color;
+        }
+      }
+      .post_job_btn {
+        background-color: @blocks_color;
+        border: 2px solid @active_color;
+        border-radius: 10px;
+        color: @active_color;
+        font-size: 16px;
+        &:hover {
+          background-color: @active_color;
+          color: @blocks_color;
+          cursor: pointer;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:disabled {
+          border: 2px solid @inactive_color;
+          color: @inactive_color;
+          cursor: pointer;
+          &:hover {
+            background: none;
+            color: @inactive_color;
+          }
+        }
+      }
+      a {
+        place-self: flex-end;
+        margin-top: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+}

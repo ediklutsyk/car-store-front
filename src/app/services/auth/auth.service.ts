@@ -50,6 +50,7 @@ export class AuthService {
   }
 
   private request(data): void {
+    console.log(1, data);
     let headers = this.options.headers.set('Content-Type', 'application/json');
     headers = headers.set('Authorization', 'Basic ' + btoa(data.email + ':' + data.password));
     this.options.headers = headers;
