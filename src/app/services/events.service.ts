@@ -15,6 +15,9 @@ export class EventsService {
       user: {
         create: 'requested.data.user.create',
       },
+      car:{
+        all: 'requested.data.car.all',
+      }
     }
   };
   public received = {
@@ -26,6 +29,9 @@ export class EventsService {
       user: {
         create: 'received.data.user.create',
       },
+      car:{
+        all: 'received.data.car.all',
+      }
     },
     error: 'received.error',
     success: 'received.success'

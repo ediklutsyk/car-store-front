@@ -1,0 +1,49 @@
+<div class="home">
+  <div class="header">
+    <div class="logo">
+      <p><b>Car</b>store</p>
+    </div>
+    <div class="search-field">
+      <input placeholder="Search cars ..."
+             (input)="onSearchChange($event.target.value)">
+             <!--[(ngModel)]="filters.search">-->
+    </div>
+    <div class="profile">
+      <div *ngIf="!isLoggedIn" class="login_signup">
+        <div class="login">
+          <a routerLink="/login">Login</a>
+        </div>
+        <div class="signup">
+          <a routerLink="/sign-up">Sign up</a>
+        </div>
+      </div>
+      Loged in {{isLoggedIn == true }}
+      <div *ngIf="isLoggedIn">
+        <span>{{email}} | </span>
+        <span (click)="logOut()">LOGOUT</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="filters"></div>
+    <div class="body">
+      <div *ngFor="let car of cars" class="car">
+        <img src="{{apiUrl}}get-image/{{car.imgId}}">
+        <span>Brand: {{car.brand}}</span>
+        <span>Model: {{car.model}}</span>
+        <span>Color: {{car.color}}</span>
+        <span>Doors amount: {{car.doorsAmount}}</span>
+        <span>Drive type: {{car.driveType}}</span>
+        <span>Engine type: {{car.engineType}}</span>
+        <span>Passenger amount: {{car.passengerAmount}}</span>
+        <span>Transport type: {{car.transportType}}</span>
+        <span>Mileage: {{car.mileage}}</span>
+        <span>Year: {{car.year}}</span>
+        <b>Price: {{car.price}}</b>
+      </div>
+    </div>
+  </div>
+</div>
+
+

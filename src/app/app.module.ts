@@ -11,12 +11,15 @@ import {EventsService} from "./services/events.service";
 import {BusService} from "./services/bus.service";
 import {AuthService} from "./services/auth/auth.service";
 import {HeadersInterceptor} from "./interceptors/interceptors.service";
+import {HomeComponent} from './components/home/home.component';
+import {GetAllCarsService} from "./services/car/get-all-cars.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import {HeadersInterceptor} from "./interceptors/interceptors.service";
     EventsService,
 
     AuthService,
+    GetAllCarsService,
 
     {
       provide: HTTP_INTERCEPTORS,
@@ -40,7 +44,10 @@ import {HeadersInterceptor} from "./interceptors/interceptors.service";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private getAllCarsService: GetAllCarsService,
+  ) {
   }
 
 }
