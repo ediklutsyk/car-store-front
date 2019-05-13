@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   public success(user: User): void {
-    localStorage.setItem('currentUser', JSON.stringify({id: user.id, token: user.token, email: user.email}));
+    localStorage.setItem('currentUser', JSON.stringify({id: user.id, token: user.token, email: user.email, role: user.role}));
     this.bus.publish(this.events.notified.authentication, true, this);
     this.router.navigate(['']);
   }

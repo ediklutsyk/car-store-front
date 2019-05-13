@@ -12,4 +12,5 @@ export interface Car {
   passengerAmount: number,
   imgId: number;
   price: number;
+  amount: number;
 }

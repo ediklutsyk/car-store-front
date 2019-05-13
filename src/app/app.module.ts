@@ -13,6 +13,9 @@ import {AuthService} from "./services/auth/auth.service";
 import {HeadersInterceptor} from "./interceptors/interceptors.service";
 import {HomeComponent} from './components/home/home.component';
 import {GetAllCarsService} from "./services/car/get-all-cars.service";
+import {CarsSearchService} from "./services/car/search-car.service";
+import {BuyCarService} from "./services/car/buy-car.service";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,15 +28,18 @@ import {GetAllCarsService} from "./services/car/get-all-cars.service";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     // Services
     BusService,
     EventsService,
-
     AuthService,
+
     GetAllCarsService,
+    CarsSearchService,
+    BuyCarService,
 
     {
       provide: HTTP_INTERCEPTORS,
@@ -47,6 +53,8 @@ export class AppModule {
   constructor(
     private authService: AuthService,
     private getAllCarsService: GetAllCarsService,
+    private carsSearchService: CarsSearchService,
+    private buyCarService: BuyCarService,
   ) {
   }
 
