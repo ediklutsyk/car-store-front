@@ -4,66 +4,67 @@
       <p><b>Car</b>store</p>
     </div>
     <div class="search-field">
-      <input placeholder="Search cars ..."
-             (input)="onSearchChange($event.target.value)">
-      <!--[(ngModel)]="filters.search">-->
+      <input class="form-control" placeholder="Search cars ..." (input)="onSearchChange($event.target.value)">
     </div>
     <div class="profile">
-      <div *ngIf="!isLoggedIn" class="login_signup">
-        <div class="login">
-          <a routerLink="/login">Login</a>
-        </div>
-        <div class="signup">
-          <a routerLink="/sign-up">Sign up</a>
+      <div *ngIf="!isLoggedIn" class="not-logged-in">
+        <div class="buttons">
+          <a class="btn btn-primary" routerLink="/login">Login</a>
+          <a class="btn btn-primary" routerLink="/sign-up">Sign up</a>
         </div>
       </div>
-      <div *ngIf="isLoggedIn">
-        <span>{{email}} | </span>
-        <span (click)="logOut()">LOGOUT</span>
+      <div class="logged-in" *ngIf="isLoggedIn">
+        <span>{{email}}</span>|<span (click)="logOut()">LOGOUT</span>
       </div>
-      <button (click)="open(content)"><i class="fa fa-plus-circle"></i></button>
     </div>
   </div>
 
   <div class="main">
     <div class="filters">
-      <div class="brands" style="margin-left: 2em;">
+      <div class="filter brands">
+        <span>Brands:</span>
         <div class="brand" *ngFor="let brand of brands">
           <input type="checkbox" (click)="addToFilter('brands', brand)" class="form-check-input">
           <label class="form-check-label">{{brand}}</label>
         </div>
       </div>
-      <div class="years" style="margin-left: 2em;">
+      <div class="filter years">
+        <span>Years:</span>
         <div class="year" *ngFor="let year of years">
           <input type="checkbox" (click)="addToFilter('years', year)" class="form-check-input">
           <label class="form-check-label">{{year}}</label>
         </div>
       </div>
-      <div class="colors" style="margin-left: 2em;">
+      <div class="filter colors">
+        <span>Colors:</span>
         <div class="color" *ngFor="let color of colors">
           <input type="checkbox" (click)="addToFilter('colors', color)" class="form-check-input">
           <label class="form-check-label">{{color}}</label>
         </div>
       </div>
-      <div class="driveTypes" style="margin-left: 2em;">
+      <div class="filter driveTypes">
+        <span>Drive types:</span>
         <div class="driveType" *ngFor="let driveType of driveTypes">
           <input type="checkbox" (click)="addToFilter('driveTypes', driveTypes)" class="form-check-input">
           <label class="form-check-label">{{driveType}}</label>
         </div>
       </div>
-      <div class="transportTypes" style="margin-left: 2em;">
+      <div class="filter transportTypes">
+        <span>Transport type:</span>
         <div class="transportType" *ngFor="let transportType of transportTypes">
           <input type="checkbox" (click)="addToFilter('transportTypes', transportType)" class="form-check-input">
           <label class="form-check-label">{{transportType}}</label>
         </div>
       </div>
-      <div class="engineTypes" style="margin-left: 2em;">
+      <div class="filter engineTypes">
+        <span>Engine type:</span>
         <div class="transportType" *ngFor="let engineType of engineTypes">
           <input type="checkbox" (click)="addToFilter('engineTypes', engineType)" class="form-check-input">
           <label class="form-check-label">{{engineType}}</label>
         </div>
       </div>
-      <div class="passengerAmount" style="margin-left: 2em;">
+      <div class="filter passengerAmount">
+        <span>Passenger amount:</span>
         <div class="passenger" *ngFor="let passenger of passengerAmount">
           <input type="checkbox" (click)="addToFilter('passengerAmount', passenger)" class="form-check-input">
           <label class="form-check-label">{{passenger}}</label>
@@ -71,21 +72,26 @@
       </div>
     </div>
     <div class="body">
+      <!--<button (click)="open(content)"><i class="fa fa-plus-circle"></i></button>-->
       <div *ngFor="let car of cars" class="car">
+        <div class="info">
         <img src="{{apiUrl}}get-image/{{car.imgId}}">
-        <span>Brand: {{car.brand}}</span>
-        <span>Model: {{car.model}}</span>
-        <span>Color: {{car.color}}</span>
-        <span>Doors amount: {{car.doorsAmount}}</span>
-        <span>Drive type: {{car.driveType}}</span>
-        <span>Engine type: {{car.engineType}}</span>
-        <span>Passenger amount: {{car.passengerAmount}}</span>
-        <span>Transport type: {{car.transportType}}</span>
-        <span>Mileage: {{car.mileage}}</span>
-        <span>Year: {{car.year}}</span>
-        <b>Price: {{car.price}}</b>
-        <div class="buy" *ngIf="role === 'ROLE_USER'">
-          <button (click)="buyCar(car.id)" [disabled]="car.amount == 0" [class]="car.amount == 0 ? 'btn btn-outline-secondary':'btn btn-success'">Buy</button>
+        <span>Brand: <b>{{car.brand}}</b></span>
+        <span>Model: <b>{{car.model}}</b></span>
+        <span>Color: <b>{{car.color}}</b></span>
+        <span>Doors amount: <b>{{car.doorsAmount}}</b></span>
+        <span>Drive type: <b>{{car.driveType}}</b></span>
+        <span>Engine type: <b>{{car.engineType}}</b></span>
+        <span>Passenger amount: <b>{{car.passengerAmount}}</b></span>
+        <span>Transport type: <b>{{car.transportType}}</b></span>
+        <span>Mileage: <b>{{car.mileage}}</b></span>
+        <span>Year: <b>{{car.year}}</b></span>
+        </div>
+        <div class="price">
+          <b>Price: {{car.price}}</b>
+          <div class="buy" *ngIf="role === 'ROLE_USER'">
+            <button (click)="buyCar(car.id)" [disabled]="car.amount == 0" [class]="car.amount == 0 ? 'btn btn-outline-secondary':'btn btn-success'">Buy</button>
+          </div>
         </div>
       </div>
     </div>
